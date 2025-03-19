@@ -6,7 +6,7 @@ function loadOldPage () {
     window.location.href = "index.html"
 }
 
-const canvas = document.getElementById('particalCanvas');
+const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
@@ -31,5 +31,47 @@ class Particle {
     draw() {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
     }
 }
+
+let particlesArray = [];
+
+function handleParticels() {
+    particlesArray.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+
+        if (particle.size <= 0.3) {
+            particlesArray.splice(index, 1);
+        }
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleParticels();
+    requestAnimationFrame(animate);
+}
+
+function init() {
+    let mouse = {
+        x: null,
+        y: null
+    };
+
+    window.addEventListener('mousemove', function(event) {
+        mouse.x = event.x;
+        mouse.y = event.y;
+
+        for (let i = 0; i < 5; i++) {
+            particlesArray.push(new Particle(mouse.x, mouse.y));
+        }     
+    });
+
+    animate();
+}
+
+init();
