@@ -3,3 +3,7 @@ h1 {
     left: 500px;
     top: 150px;
 }
+
+body {
+    background-color: rgba(8, 1, 53, 0.664);
+}
