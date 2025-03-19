@@ -5,10 +5,11 @@ h1 {
 
 body {
     margin: 0; 
-    background-color: rgba(8, 1, 53, 0.664);
+    background-color: rgb(13, 0, 58);
     overflow: hidden;
 }
 
 canvas {
-    display: block;
+  display: block;
+  border: 1px solid rgb(13, 0, 58); /* Add this to see the canvas */
 }

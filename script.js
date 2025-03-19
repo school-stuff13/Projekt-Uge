@@ -13,7 +13,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 class Particle {
-    constructor (x, y) {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.size = Math.random() * 5 + 1;
@@ -29,7 +29,7 @@ class Particle {
     }
 
     draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -39,25 +39,26 @@ class Particle {
 
 let particlesArray = [];
 
-function handleParticels() {
-    particlesArray.forEach((particle, index) => {
-        particle.update();
-        particle.draw();
+function handleParticles() {
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
 
-        if (particle.size <= 0.3) {
-            particlesArray.splice(index, 1);
+        if (particlesArray[i].size <= 0.3) {
+            particlesArray.splice(i, 1);
+            i--; // Adjust the index after splicing
         }
-    });
+    }
 }
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleParticels();
+    handleParticles();
     requestAnimationFrame(animate);
 }
 
 function init() {
-    let mouse = {
+    const mouse = {
         x: null,
         y: null
     };
@@ -68,7 +69,7 @@ function init() {
 
         for (let i = 0; i < 5; i++) {
             particlesArray.push(new Particle(mouse.x, mouse.y));
-        }     
+        }
     });
 
     animate();
