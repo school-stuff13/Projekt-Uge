@@ -4,8 +4,3 @@ h1 {
   left: 50%;
   color: azure;
 }
-
-canvas {
-  display: grid;
-  border: 10000px solid rgb(10, 0, 49); /* Add this to see the canvas */
-}
