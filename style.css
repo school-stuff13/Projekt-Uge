@@ -5,11 +5,7 @@ h1 {
   color: azure;
 }
 
-body {
-  font-family: 'Times New Roman', Times, serif
-}
-
 canvas {
-  display: block;
+  display: grid;
   border: 10000px solid rgb(10, 0, 49); /* Add this to see the canvas */
 }
