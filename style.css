@@ -4,3 +4,7 @@ h1 {
   left: 50%;
   color: azure;
 }
+
+body {
+  background-color: rgba(1, 1, 47, 0.903);
+}
